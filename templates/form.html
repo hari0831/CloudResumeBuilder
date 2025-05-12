@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span> Toggle Dark Mode
+    </label>
+
+    <h1>Resume Builder</h1>
+    <form action="/generate" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        
+        <label>Phone:</label>
+        <input type="text" name="phone" required><br>
+        
+        <label>Summary:</label>
+        <textarea name="summary" rows="4" required></textarea><br>
+        
+        <label>Skills:</label>
+        <input type="text" name="skills" placeholder="Comma separated list" required><br>
+        
+        <label>Experience:</label>
+        <textarea name="experience" rows="6" required></textarea><br>
+        
+        <label>Education:</label>
+        <textarea name="education" rows="4" required></textarea><br>
+
+        <label>Choose Template:</label>
+        <select name="template" required>
+            <option value="resume_template1.html">Modern Professional</option>
+            <option value="resume_template2.html">Classic Elegant</option>
+            <option value="resume_template3.html">Creative Designer</option>
+            <option value="resume_template4.html">Minimalist Clean</option>
+        </select><br>
+
+        <input type="submit" value="Generate Resume">
+    </form>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
